@@ -34,7 +34,6 @@ export class FormularioPersonalComponent implements OnInit {
   onSubmit() {
     if (this.service.formPersonal.valid) {
       if (!this.service.formPersonal.get('idPersonal').value){
-        this.service.formPersonal.patchValue({idPersonal:2});
         this.service.addPersonal(this.service.formPersonal.value);
       }
       else{

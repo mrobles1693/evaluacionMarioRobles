@@ -8,7 +8,7 @@
   </h2>
   <form (ngSubmit)="onSubmit()" [formGroup]="service.formPersonal">
     <mat-form-field>
-      <mat-select formControlName="TipoDoc" placeholder="Tipo Documento">
+      <mat-select formControlName="tipoDoc" placeholder="Tipo Documento">
         <mat-option value="DNI">DNI</mat-option>
         <mat-option value="C.E.">C.E.</mat-option>
         <mat-option value="Pasaporte">Pasaporte</mat-option>
@@ -16,28 +16,28 @@
     </mat-form-field>
 
     <mat-form-field>
-      <input formControlName="NumeroDoc" matInput placeholder="Número Documento" />
+      <input formControlName="numeroDoc" matInput placeholder="Número Documento" />
     </mat-form-field>
 
     <mat-form-field>
-      <input formControlName="Nombre1" matInput placeholder="Primer Nombre"/>
+      <input formControlName="nombre1" matInput placeholder="Primer Nombre"/>
     </mat-form-field>
 
     <mat-form-field>
-      <input formControlName="Nombre2" matInput placeholder="Segundo Nombre"/>
+      <input formControlName="nombre2" matInput placeholder="Segundo Nombre"/>
     </mat-form-field>
 
     <mat-form-field>
-      <input formControlName="ApPaterno" matInput placeholder="Apellido Paterno"/>
+      <input formControlName="apPaterno" matInput placeholder="Apellido Paterno"/>
     </mat-form-field>
 
     <mat-form-field>
-      <input formControlName="ApMaterno" matInput placeholder="Apellido Materno"/>
+      <input formControlName="apMaterno" matInput placeholder="Apellido Materno"/>
     </mat-form-field>
 
     <mat-form-field>
       <input
-        formControlName="FechaNac"
+        formControlName="fechaNac"
         matInput
         [matDatepicker]="fechaNac"
         placeholder="Fecha Nacimiento"
@@ -48,7 +48,7 @@
 
     <mat-form-field>
       <input
-        formControlName="FechaIngreso"
+        formControlName="fechaIngreso"
         matInput
         [matDatepicker]="fechaIngreso"
         placeholder="Fecha Ingreso"

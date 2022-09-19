@@ -17,15 +17,15 @@ export class PrincipalPersonalComponent {
 
   nuevoPersonal: IPersonal = {
     idPersonal: 0,
-    TipoDoc: '',
-    NumeroDoc: '',
-    Nombre1: '',
-    Nombre2: '',
-    ApPaterno: '',
-    ApMaterno: '',
-    NombreCompleto: '',
-    FechaNac: null,
-    FechaIngreso: null,
+    tipoDoc: '',
+    numeroDoc: '',
+    nombre1: '',
+    nombre2: '',
+    apPaterno: '',
+    apMaterno: '',
+    nombreCompleto: '',
+    fechaNac: null,
+    fechaIngreso: null,
   };
 
   abrirFormularioUsuario(): void {

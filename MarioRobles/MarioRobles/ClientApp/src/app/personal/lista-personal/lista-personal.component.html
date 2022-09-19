@@ -4,32 +4,32 @@
     <td mat-cell *matCellDef="let personal">{{ personal.idPersonal }}</td>
   </ng-container>
 
-  <ng-container matColumnDef="NombreCompleto">
+  <ng-container matColumnDef="nombreCompleto">
     <th mat-header-cell *matHeaderCellDef>Nombre Completo</th>
-    <td mat-cell *matCellDef="let personal">{{ personal.NombreCompleto }}</td>
+    <td mat-cell *matCellDef="let personal">{{ personal.nombreCompleto }}</td>
   </ng-container>
 
-  <ng-container matColumnDef="TipoDoc">
+  <ng-container matColumnDef="tipoDoc">
     <th mat-header-cell *matHeaderCellDef>Tipo Doc</th>
-    <td mat-cell *matCellDef="let personal">{{ personal.TipoDoc }}</td>
+    <td mat-cell *matCellDef="let personal">{{ personal.tipoDoc }}</td>
   </ng-container>
 
-  <ng-container matColumnDef="NumeroDoc">
+  <ng-container matColumnDef="numeroDoc">
     <th mat-header-cell *matHeaderCellDef>Numero Doc</th>
-    <td mat-cell *matCellDef="let personal">{{ personal.NumeroDoc }}</td>
+    <td mat-cell *matCellDef="let personal">{{ personal.numeroDoc }}</td>
   </ng-container>
 
-  <ng-container matColumnDef="FechaNac">
+  <ng-container matColumnDef="fechaNac">
     <th mat-header-cell *matHeaderCellDef>F. Nacimiento</th>
     <td mat-cell *matCellDef="let personal">
-      {{ personal.FechaNac | date: "dd/MM/yyyy" }}
+      {{ personal.fechaNac | date: "dd/MM/yyyy" }}
     </td>
   </ng-container>
 
-  <ng-container matColumnDef="FechaIngreso">
+  <ng-container matColumnDef="fechaIngreso">
     <th mat-header-cell *matHeaderCellDef>F. Ingreso</th>
     <td mat-cell *matCellDef="let personal">
-      {{ personal.FechaIngreso | date: "dd/MM/yyyy" }}
+      {{ personal.fechaIngreso | date: "dd/MM/yyyy" }}
     </td>
   </ng-container>
 

@@ -24,12 +24,12 @@ export class ListaPersonalComponent implements OnInit {
   dataSource = new MatTableDataSource<IPersonal>();
   
   ngOnInit() {
-    this.displayedColumns = ['idPersonal', 'NombreCompleto', 'TipoDoc', 'NumeroDoc','FechaNac','FechaIngreso','options'];
-    this.personalService.listaPersonal$().subscribe(
-      personas => {
-        this.dataSource.data = personas;
-      }
-    );
+    this.displayedColumns = ['idPersonal', 'nombreCompleto', 'tipoDoc', 'numeroDoc','fechaNac','fechaIngreso','options'];
+     this.personalService.listaPersonal$().subscribe(
+         personas => {
+             this.dataSource.data = personas;
+       }
+     );                               
   }
 
   onEdit(personal: IPersonal){
