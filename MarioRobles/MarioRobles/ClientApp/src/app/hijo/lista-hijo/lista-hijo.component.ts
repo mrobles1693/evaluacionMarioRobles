@@ -41,4 +41,8 @@ export class ListaHijoComponent implements OnInit {
         this.hijoService.deleteHijo(idHijo);
     }
 
+    applyFilter(event: Event) {
+        const filterValue = (event.target as HTMLInputElement).value;
+        this.dataSource.filter = filterValue.trim().toLowerCase();
+    }
 }
