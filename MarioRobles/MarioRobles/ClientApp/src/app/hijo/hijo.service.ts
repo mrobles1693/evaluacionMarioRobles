@@ -31,13 +31,9 @@ export class HijoService {
     }
 
     getHijos() {
-        console.log('get');
         this.http.get<IResponse>(this.baseUrl + 'Hijo/' + this.idPersonal).subscribe(result => {
-            this._listHijo = result.data as IHijo[];
-            this.obsHijo$.next(this._listHijo);
-            console.log('get-response');
-        }, error => console.error(error));
-        console.log('get-end');
+            this.obsHijo$.next(result.data as IHijo[]);
+        });
     }
 
     addHijo(hijoAdd) {
@@ -56,9 +52,9 @@ export class HijoService {
         }
 
         this.http.put<IResponse>(this.baseUrl + 'Hijo', hijo).subscribe(result => {
-        }, error => console.error(error));
+            this.getHijos();
+        });
 
-        this.getHijos();
     }
 
     editHijo(hijoEdit) {
@@ -76,9 +72,9 @@ export class HijoService {
         }
 
         this.http.post<IResponse>(this.baseUrl + 'Hijo', hijo).subscribe(result => {
-        }, error => console.error(error));
+            this.getHijos();
+        });
 
-        this.getHijos();
     }
 
     deleteHijo(idHijo) {
@@ -86,9 +82,8 @@ export class HijoService {
         this.http.delete<IResponse>(this.baseUrl + 'Hijo/' + idHijo).subscribe(result => {
             console.log('Result del');
             console.log(result);
-        }, error => console.error(error));
-
-        this.getHijos();
+            this.getHijos();
+        });
     }
 
     formHijo: FormGroup = new FormGroup({

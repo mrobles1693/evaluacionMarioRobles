@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { IPersonal } from './interfaces/personal';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { IResponse } from '../response';
 
@@ -22,7 +22,7 @@ export class PersonalService {
     }
 
     listaPersonal$() {
-        this.http.get<IResponse>(this.baseUrl + 'Personal').toPromise().then(result => {
+        this.http.get<IResponse>(this.baseUrl + 'Personal').subscribe(result => {
             this._listPersonal = result.data as IPersonal[];
             this.obsPersonal$.next(this._listPersonal);
         });
@@ -31,9 +31,8 @@ export class PersonalService {
 
     getListaPersonal() {
         this.http.get<IResponse>(this.baseUrl + 'Personal').subscribe(result => {
-            this._listPersonal = result.data as IPersonal[];
-            this.obsPersonal$.next(this._listPersonal);
-        }, error => console.error(error));
+            this.obsPersonal$.next(result.data as IPersonal[]);
+        });
     }
 
     addPersonal(personal) {
@@ -51,9 +50,8 @@ export class PersonalService {
         }
 
         this.http.put<IResponse>(this.baseUrl + 'Personal', pers).subscribe(result => {
-        }, error => console.error(error));
-
-        this.getListaPersonal();
+            this.getListaPersonal();
+        });
     }
 
     editPersonal(personalEditado) {
@@ -71,9 +69,9 @@ export class PersonalService {
         };
 
         this.http.post<IResponse>(this.baseUrl + 'Personal', pers).subscribe(result => {
-        }, error => console.error(error));
+            this.getListaPersonal();
+        });
 
-        this.getListaPersonal();
     }
 
     deletePersonal(idpersonal) {
@@ -81,8 +79,8 @@ export class PersonalService {
         this.http.delete<IResponse>(this.baseUrl + 'Personal/' + idpersonal).subscribe(result => {
             console.log('Result del');
             console.log(result);
-        }, error => console.error(error));
-        this.getListaPersonal();
+            this.getListaPersonal();
+        });
     }
 
     formPersonal: FormGroup = new FormGroup({
