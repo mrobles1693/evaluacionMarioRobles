@@ -23,7 +23,7 @@ export class HijoService {
     }
 
     listaHijo$() {
-        this.http.get<IResponse>(this.baseUrl + 'Hijo/' + this.idPersonal).subscribe(result => {
+        this.http.get<IResponse>(this.baseUrl + 'Hijo/' + this.idPersonal).toPromise().then(result => {
             this._listHijo = result.data as IHijo[];
             this.obsHijo$.next(this._listHijo);
         }, error => console.error(error));
@@ -31,18 +31,16 @@ export class HijoService {
     }
 
     getHijos() {
+        console.log('get');
         this.http.get<IResponse>(this.baseUrl + 'Hijo/' + this.idPersonal).subscribe(result => {
             this._listHijo = result.data as IHijo[];
             this.obsHijo$.next(this._listHijo);
+            console.log('get-response');
         }, error => console.error(error));
+        console.log('get-end');
     }
 
     addHijo(hijoAdd) {
-
-        console.log('ID PERSONAL');
-        console.log(this.idPersonal);
-        console.log('Hijo');
-        console.log(hijoAdd);
 
         const hijo: IHijo = {
             idHijo: 0,

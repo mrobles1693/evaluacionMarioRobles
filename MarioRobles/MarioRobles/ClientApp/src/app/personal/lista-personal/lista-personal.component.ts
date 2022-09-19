@@ -50,4 +50,8 @@ export class ListaPersonalComponent implements OnInit {
     this.dialogHijos.open(PrincipalHijoComponent, { width: '50%' });
   }
 
+    applyFilter(event: Event) {
+        const filterValue = (event.target as HTMLInputElement).value;
+        this.dataSource.filter = filterValue.trim().toLowerCase();
+    }
 }

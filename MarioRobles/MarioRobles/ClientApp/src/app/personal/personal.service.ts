@@ -22,10 +22,10 @@ export class PersonalService {
     }
 
     listaPersonal$() {
-        this.http.get<IResponse>(this.baseUrl + 'Personal').subscribe(result => {
+        this.http.get<IResponse>(this.baseUrl + 'Personal').toPromise().then(result => {
             this._listPersonal = result.data as IPersonal[];
             this.obsPersonal$.next(this._listPersonal);
-        }, error => console.error(error));
+        });
         return this.obsPersonal$.asObservable();
     }
 
