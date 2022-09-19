@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
+
+import { IHijo } from '../interfaces/hijo';
+
+import { HijoService } from '../hijo.service';
+
+import { FormularioHijoComponent } from '../formulario-hijo/formulario-hijo.component';
 
 @Component({
   selector: 'app-lista-hijo',
@@ -7,9 +15,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaHijoComponent implements OnInit {
 
-  constructor() { }
+    constructor(
+        private hijoService: HijoService,
+        public dialogFormHijo: MatDialog
+    ) { }
 
-  ngOnInit() {
-  }
+    displayedColumns: string[] = [];
+    dataSource = new MatTableDataSource<IHijo>();
+
+    ngOnInit() {
+        this.displayedColumns = ['idHijo', 'nombreCompleto', 'fechaNac', 'options'];
+        this.hijoService.listaHijo$().subscribe(
+            hijos => {
+                this.dataSource.data = hijos;
+            }
+        );
+    }
+
+    onEdit(hijo: IHijo) {
+        this.hijoService.llenarformPersonal(hijo);
+        this.dialogFormHijo.open(FormularioHijoComponent, { width: '400px' });
+    }
+
+    onDelete(idHijo) {
+        this.hijoService.deleteHijo(idHijo);
+    }
 
 }

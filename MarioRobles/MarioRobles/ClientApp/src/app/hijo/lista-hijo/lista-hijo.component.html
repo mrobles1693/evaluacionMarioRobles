@@ -1,1 +1,29 @@
-<p>lista-hijo works!</p>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="idHijo">
+        <th mat-header-cell *matHeaderCellDef>Id</th>
+        <td mat-cell *matCellDef="let hijo">{{ hijo.idHijo }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="nombreCompleto">
+        <th mat-header-cell *matHeaderCellDef>Nombre Completo</th>
+        <td mat-cell *matCellDef="let hijo">{{ hijo.nombreCompleto }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="fechaNac">
+        <th mat-header-cell *matHeaderCellDef>F. Nacimiento</th>
+        <td mat-cell *matCellDef="let hijo">
+            {{ hijo.fechaNac | date: "dd/MM/yyyy" }}
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="options">
+        <th mat-header-cell *matHeaderCellDef>Opciones</th>
+        <td mat-cell *matCellDef="let hijo">
+            <button mat-icon-button><mat-icon (click)="onEdit(hijo)">edit</mat-icon></button>
+            <button mat-icon-button><mat-icon (click)="onDelete(hijo.idHijo)">delete_forever</mat-icon></button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let persola; columns: displayedColumns"></tr>
+</table>

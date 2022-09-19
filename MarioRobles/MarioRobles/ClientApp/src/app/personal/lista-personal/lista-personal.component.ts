@@ -3,7 +3,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 
 import { IPersonal } from '../interfaces/personal';
+
 import { PersonalService } from '../personal.service';
+import { HijoService } from '../../hijo/hijo.service';
+
 import { FormularioPersonalComponent } from '../formulario-personal/formulario-personal.component';
 import { PrincipalHijoComponent } from '../../hijo/principal-hijo/principal-hijo.component';
 
@@ -16,6 +19,7 @@ export class ListaPersonalComponent implements OnInit {
 
   constructor(
     private personalService: PersonalService,
+    private hijoService: HijoService,
     public dialogFormTrabajador: MatDialog,
     public dialogHijos: MatDialog,
     ) { }
@@ -41,8 +45,9 @@ export class ListaPersonalComponent implements OnInit {
     this.personalService.deletePersonal(idPersonal);
   }
 
-  onHijos(idPersonal){
-    this.dialogHijos.open(PrincipalHijoComponent,{width:'70%'})
+  onHijos(idPersonal) {
+    this.hijoService.idPersonal = idPersonal;
+    this.dialogHijos.open(PrincipalHijoComponent, { width: '50%' });
   }
 
 }

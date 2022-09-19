@@ -1,1 +1,52 @@
-<p>formulario-hijo works!</p>
+<div class="contenedor-formulario">
+    <h2>
+        {{
+            service.formHijo.controls["idHijo"].value
+        ? "Editar Hijo"
+        : "Registrar Hijo"
+        }}
+    </h2>
+    <form (ngSubmit)="onSubmit()" [formGroup]="service.formHijo">
+        <mat-form-field>
+            <mat-select formControlName="tipoDoc" placeholder="Tipo Documento">
+                <mat-option value="DNI">DNI</mat-option>
+                <mat-option value="C.E.">C.E.</mat-option>
+                <mat-option value="Pasaporte">Pasaporte</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input formControlName="numeroDoc" matInput placeholder="Numero Documento" />
+        </mat-form-field>
+
+        <mat-form-field>
+            <input formControlName="nombre1" matInput placeholder="Primer Nombre" />
+        </mat-form-field>
+
+        <mat-form-field>
+            <input formControlName="nombre2" matInput placeholder="Segundo Nombre" />
+        </mat-form-field>
+
+        <mat-form-field>
+            <input formControlName="apPaterno" matInput placeholder="Apellido Paterno" />
+        </mat-form-field>
+
+        <mat-form-field>
+            <input formControlName="apMaterno" matInput placeholder="Apellido Materno" />
+        </mat-form-field>
+
+        <mat-form-field>
+            <input formControlName="fechaNac"
+                   matInput
+                   [matDatepicker]="fechaNac"
+                   placeholder="Fecha Nacimiento" />
+            <mat-datepicker-toggle matSuffix [for]="fechaNac"></mat-datepicker-toggle>
+            <mat-datepicker #fechaNac></mat-datepicker>
+        </mat-form-field>
+                 
+        <div class="form-options">
+            <button mat-raised-button color="warn" (click)="onClose()">Cancelar</button>
+            <button mat-raised-button color="primary" type="submit" [disabled]="service.formHijo.invalid">Registrar</button>
+        </div>
+    </form>
+</div>

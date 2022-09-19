@@ -1,0 +1,16 @@
+.contenedor-formulario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+    .contenedor-formulario form mat-form-field {
+        width: 100%;
+    }
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

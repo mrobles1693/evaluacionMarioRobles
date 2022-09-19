@@ -12,7 +12,6 @@ export class PersonalService {
 
     _listPersonal: IPersonal[] = [];
     private obsPersonal$: Subject<IPersonal[]>;
-    id: number = 1;
     http: HttpClient;
     baseUrl: string;
 

@@ -11,6 +11,8 @@ import { FormularioHijoComponent } from '../formulario-hijo/formulario-hijo.comp
 })
 export class PrincipalHijoComponent implements OnInit {
 
+    idPersonal: number = 0;
+
   constructor(
     public dialogRef: MatDialogRef<PrincipalHijoComponent>,
     public dialogFormHijos: MatDialog,
@@ -20,7 +22,7 @@ export class PrincipalHijoComponent implements OnInit {
   }
 
   abrirFormularioHijo(idPersonal){
-    this.dialogFormHijos.open(FormularioHijoComponent,{width:'70%'});
+    this.dialogFormHijos.open(FormularioHijoComponent,{width:'400px'});
   }
 
   cerrarFormulario(){
