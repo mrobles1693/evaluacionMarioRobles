@@ -16,7 +16,7 @@
         </mat-form-field>
 
         <mat-form-field>
-            <input formControlName="numeroDoc" matInput placeholder="Numero Documento" />
+            <input formControlName="numeroDoc" matInput placeholder="Numero Documento" minlength="8" pattern="[0-9]*"/>
         </mat-form-field>
 
         <mat-form-field>
@@ -39,7 +39,9 @@
             <input formControlName="fechaNac"
                    matInput
                    [matDatepicker]="fechaNac"
-                   placeholder="Fecha Nacimiento" />
+                   placeholder="Fecha Nacimiento"
+                   max="{{ service.fechaActual | date:'yyyy-MM-dd'}}"
+                   />
             <mat-datepicker-toggle matSuffix [for]="fechaNac"></mat-datepicker-toggle>
             <mat-datepicker #fechaNac></mat-datepicker>
         </mat-form-field>

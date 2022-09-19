@@ -14,11 +14,15 @@ export class PersonalService {
     private obsPersonal$: Subject<IPersonal[]>;
     http: HttpClient;
     baseUrl: string;
+    fechaActual: Date = new Date();
+    fechaMax: Date = new Date();
 
     constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
         this.http = http;
         this.baseUrl = baseUrl;
         this.obsPersonal$ = new Subject();
+        this.fechaMax.setFullYear(this.fechaActual.getFullYear() - 18);
+        this.fechaActual.setDate(this.fechaActual.getDate() + 1);
     }
 
     listaPersonal$() {

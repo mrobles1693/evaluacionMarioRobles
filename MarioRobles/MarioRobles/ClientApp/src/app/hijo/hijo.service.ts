@@ -15,11 +15,13 @@ export class HijoService {
     http: HttpClient;
     baseUrl: string;
     idPersonal: number;
+    fechaActual: Date = new Date();
 
     constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
         this.http = http;
         this.baseUrl = baseUrl;
         this.obsHijo$ = new Subject();
+        this.fechaActual.setDate(this.fechaActual.getDate() + 1);
     }
 
     listaHijo$() {
